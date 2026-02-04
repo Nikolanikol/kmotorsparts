@@ -1,0 +1,9 @@
+# Kmotors - Корейские автозапчасти
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kmotors.ru/sitemap.xml
+
+# Disallow API routes
+Disallow: /api/
