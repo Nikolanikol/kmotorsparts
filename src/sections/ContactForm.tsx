@@ -64,14 +64,14 @@ export function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/telegram', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error('Ошибка отправки');
+        throw new Error("Ошибка отправки");
       }
 
       toast.success("Заявка отправлена! Мы свяжемся с вами в течение часа");
@@ -85,7 +85,9 @@ export function ContactForm() {
         message: "",
       });
     } catch {
-      toast.error("Не удалось отправить заявку. Попробуйте позже или позвоните нам");
+      toast.error(
+        "Не удалось отправить заявку. Попробуйте позже или позвоните нам",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -166,14 +168,17 @@ export function ContactForm() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5" />
+                    <Send className="w-5 h-5" />
                   </div>
-                  {/* <div>
+                  <div>
                     <div className="text-sm text-white/60 mb-1">Email</div>
-                    <a href="mailto:info@kmotors.kr" className="font-medium hover:text-[#BB162B] transition-colors">
-                      info@kmotors.kr
+                    <a
+                      href="https://t.me/koreanapart"
+                      className="font-medium hover:text-[#BB162B] transition-colors"
+                    >
+                      https://t.me/koreanapart
                     </a>
-                  </div> */}
+                  </div>
                 </div>
               </div>
 
