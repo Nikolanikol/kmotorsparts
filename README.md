@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+# KMotors Parts — Korean Car Parts Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Single-page application for a Korean auto parts export business. Built with React + Vite + shadcn/ui. Includes a parts catalog by category, product showcase with OEM part numbers, and a contact form with Telegram notifications.
 
-Currently, two official plugins are available:
+**Part of the [KMotors](https://github.com/Nikolanikol/KMotors) ecosystem** — the main platform for Korean used car sales and export.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Parts catalog** — 8 categories: engine, body, suspension, brakes, transmission, electrical, filters, lighting
+- **Product showcase** — OEM part numbers, prices in KRW, brand (Hyundai Mobis, Mando, etc.), stock status
+- **Contact form** — fields for car model and VIN, Telegram notification via Vercel serverless function
+- **Parallax hero** — scroll-based animation on the hero section
+- **Advantages section** — direct supply, quality guarantee, 7-day worldwide delivery
+- **Responsive** — mobile-first layout
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + Vite |
+| Language | TypeScript |
+| Styling | Tailwind CSS + shadcn/ui + Radix UI |
+| Forms | React Hook Form + Zod |
+| Charts | Recharts |
+| Notifications | Sonner (toast) |
+| Backend | Vercel Serverless Functions |
+| Telegram | Bot API webhook for form submissions |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+### Installation
+
+```bash
+git clone https://github.com/Nikolanikol/kmotorsparts.git
+cd kmotorsparts
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create `.env.local` in the root:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_chat_id
 ```
+
+### Run
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173)
+
+### Build
+
+```bash
+npm run build
+```
+
+---
+
+## Project Structure
+
+```
+src/
+├── sections/         # Page sections (one-page layout)
+│   ├── Header.tsx    # Navigation with smooth scroll
+│   ├── Hero.tsx      # Parallax hero banner
+│   ├── Catalog.tsx   # Parts categories grid
+│   ├── Products.tsx  # Featured products with OEM numbers
+│   ├── About.tsx     # Company advantages
+│   ├── ContactForm.tsx  # Order form → Telegram
+│   └── Footer.tsx
+├── components/ui/    # shadcn/ui component library
+└── hooks/
+api/
+└── telegram.ts       # Vercel serverless — sends form to Telegram
+```
+
+---
+
+## Deployment
+
+Deployed on Vercel. The `api/telegram.ts` serverless function handles form submissions and sends notifications to a Telegram bot.
+
+---
+
+## Related Projects
+
+- [KMotors](https://github.com/Nikolanikol/KMotors) — main used car dealership platform (Next.js + Supabase)
+
+---
+
+## License
+
+Private commercial project. All rights reserved.
