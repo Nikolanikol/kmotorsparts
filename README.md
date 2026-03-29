@@ -1,5 +1,7 @@
 # KMotors Parts — Korean Car Parts Landing Page
 
+> **Live demo:** [kmotorsparts.vercel.app](https://kmotorsparts.vercel.app)
+>
 > Single-page application for a Korean auto parts export business. Built with React + Vite + shadcn/ui. Includes a parts catalog by category, product showcase with OEM part numbers, and a contact form with Telegram notifications.
 
 **Part of the [KMotors](https://github.com/Nikolanikol/KMotors) ecosystem** — the main platform for Korean used car sales and export.
